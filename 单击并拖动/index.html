@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Click and Drag</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="items"></div>
+
+    <script>
+        let warp = document.querySelector('.items')
+        let isDowm = false;
+        let startX;
+        let startScrollLeft;
+
+        for ( var i = 0; i <= 100; i++ ) {
+            warp.innerHTML += `<div class="item item25">${i}</div>`
+        }
+
+        warp.addEventListener('mousedown',(e)=>{
+            warp.classList.add('active');
+            isDowm = true;
+            startX = e.pageX;
+            startScrollLeft = warp.scrollLeft;
+        })
+
+        warp.addEventListener('mouseleave',()=>{
+            isDowm = false;
+            warp.classList.remove('active')
+        })
+
+        warp.addEventListener('mouseup',()=>{
+            isDowm = false;
+            warp.classList.remove('active')
+        })
+
+        warp.addEventListener('mousemove',(e)=>{
+            if ( !isDowm ) return;
+            var x = e.pageX;
+            var walk = x - startX; // 向右滑动的距离
+            warp.scrollLeft = startScrollLeft - walk;
+        })
+
+        // const slider = document.querySelector('.items');
+        // let isDown = false;
+        // let startX;
+        // let scrollLeft;
+        // slider.addEventListener('mousedown', (e) => {
+        //     isDown = true;
+        //     slider.classList.add('active');
+        //     startX = e.pageX; 
+        //     scrollLeft = slider.scrollLeft;
+        // });
+        // slider.addEventListener('mouseleave', () => {
+        //     isDown = false;
+        //     slider.classList.remove('active');
+        // });
+        // slider.addEventListener('mouseup', () => {
+        //     isDown = false;
+        //     slider.classList.remove('active');
+        // });
+        // slider.addEventListener('mousemove', (e) => {
+        //     if (!isDown) return;  // stop the fn from running
+        //     e.preventDefault();
+        //     const x = e.pageX;
+        //     const walk = (x - startX);
+        //     console.log(walk)
+        //     slider.scrollLeft = scrollLeft - walk;
+        // });
+    </script>
+
+</body>
+
+</html>

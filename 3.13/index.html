@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/vue/2.6.8/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>这是vue的响应式数据:{{msg}}</p>
+		<h1>{{count * 5}}</h1>
+		<div v-html="template"></div>
+		<p>{{count}}</p>
+		<button @click="add">+</button>
+		<button @click="reduce">-</button>
+	</div>
+
+	<script>
+		let app = new Vue({
+			el:'#app',
+			data:{
+				msg:'Hellow Worder！',
+				count:1,
+				template:`<h1>hellow template!</h1>`
+			},
+			methods:{
+				add(){
+					this.count++;
+				},
+				reduce(){
+					this.count--;
+				}
+			},
+			watch: {
+				msg(newMsg,old){
+					console.log('新值：'+newMsg)
+					console.log('旧值：'+old)
+				}
+			}
+		})
+	</script>
+</body>
+</html>

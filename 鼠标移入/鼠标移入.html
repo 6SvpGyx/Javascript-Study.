@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .foot_item {
+            background: #FFFFFF;
+            border: 1px solid #e2eaf8;
+            border-radius: 2px;
+            width: 15.4%;
+            height: 85px;
+            margin-left: 1%;
+            float: left;
+            margin-top: 15px;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+
+        }
+
+        .item_numl {
+            font-family: DINPro-Medium;
+            font-size: 24px;
+            color: #2466C6;
+            letter-spacing: -0.68px;
+        }
+
+        .item_num_activel {
+            color: #FF513C;
+        }
+
+        .item_descl {
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: #111111;
+            letter-spacing: -0.4px;
+        }
+
+        .item_unitl {
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: #888888;
+            letter-spacing: -0.4px;
+        }
+
+        .aa {
+            width: 300px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="foot_item">
+            <span class="item_numl"> 111 </span><br />
+            <span class="item_descl"> 111 </span><br />
+            <span class="item_unitl"> 111</span>
+        </li>
+        <li class="foot_item">
+            <span class="item_numl"> 222 </span><br />
+            <span class="item_descl"> 22222222222222222222222222222222222213333333333333333333333333333333333333333333333333333333333333333333333333333333333333333 </span><br />
+            <span class="item_unitl"> 222</span>
+        </li>
+        <li class="foot_item">
+            <span class="item_numl"> 333 </span><br />
+            <span class="item_descl"> 444 </span><br />
+            <span class="item_unitl"> 555</span>
+        </li>
+    </ul>
+
+    <div class="aa" style="display:none;position:absolute;top:130px;left:100px;z-index: 9999;"></div>
+
+    <script>
+        let items = document.querySelectorAll('li');
+        let box = document.querySelector('.aa')
+
+        for( let i=0; i<items.length; i++ ){
+            items[i].addEventListener('mousemove',function(){
+                box.style.left = this.offsetLeft + 'px';
+                box.style.display = 'block';
+                box.innerText = this.innerText;
+            },false)
+
+            items[i].addEventListener('mouseleave',()=>{
+                    box.style.display = 'none'
+                
+            },false)
+        }
+
+    </script>
+</body>
+
+</html>
